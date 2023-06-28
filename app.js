@@ -33,3 +33,15 @@ const removeTask = (e) => {
     e.target.parentNode.remove();
     taskArray.splice(index, 1)
 };
+
+//searching function
+const searchTask = (e) => {
+    const searchTask = e.target.value.toLowerCase();
+    let tasks = [...taskArray];
+    tasks = tasks.filter(task => task.textContent.toLowerCase().includes(searchTask));
+    tasksList.textContent = "";
+    tasks.forEach(task => tasksList.appendChild(task))
+}
+
+
+searchInput.addEventListener("input", searchTask);
