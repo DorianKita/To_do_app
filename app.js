@@ -15,6 +15,21 @@ const addTask = (e) => {
     taskArray.push(li);
     tasksList.appendChild(li);
     addInput.value = ""
+
+    const tasks = [...taskElement];
+    tasks.forEach((task, index) => {
+        task.id = index;
+    });
+
+    li.querySelector("button").addEventListener("click", removeTask);
 };
 
 addBtn.addEventListener("click", addTask);
+
+//remove task function
+
+const removeTask = (e) => {
+    const index = e.target.id
+    e.target.parentNode.remove();
+    taskArray.splice(index, 1)
+};
