@@ -6,6 +6,7 @@ const addBtn = document.querySelector(".addBtn");
 const tasksList = document.querySelector(".tasks-list");
 const taskElement = document.querySelectorAll("li");
 
+
 //Add task function
 const addTask = (e) => {
     e.preventDefault();
@@ -14,6 +15,7 @@ const addTask = (e) => {
     li.innerHTML = addInput.value + " <button>Remove</button>"
     taskArray.push(li);
     tasksList.appendChild(li);
+    numberOfTasks()
     addInput.value = ""
 
     const tasks = [...taskElement];
@@ -32,6 +34,7 @@ const removeTask = (e) => {
     const index = e.target.id
     e.target.parentNode.remove();
     taskArray.splice(index, 1)
+    numberOfTasks()
 };
 
 //searching function
@@ -45,3 +48,9 @@ const searchTask = (e) => {
 
 
 searchInput.addEventListener("input", searchTask);
+
+//display number of tasks
+
+const numberOfTasks = () => {
+    tasksNumber.textContent = taskArray.length
+}
